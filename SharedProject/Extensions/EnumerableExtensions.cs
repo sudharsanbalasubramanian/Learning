@@ -14,11 +14,10 @@ namespace SharedProject.Extensions
         }
         public static void ThrowIfNullOrEmpty<T>(this IEnumerable<T>? source, string paramName)
         {
-            if (source == null)
-                throw new ArgumentNullException(paramName, $"{paramName} cannot be null.");
-
-            if (!source.Any())
-                throw new ArgumentException($"{paramName} cannot be empty.", paramName);
+            if (source.IsNullOrEmpty())
+            {
+                throw new ArgumentException($"{paramName} cannot be null or empty.", paramName);
+            }
         }
     }
 }
