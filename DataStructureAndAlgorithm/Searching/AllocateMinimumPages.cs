@@ -1,8 +1,8 @@
 ﻿using SharedProject.Extensions;
 
-namespace DataStructureAndAlgorithm.Arrays
+namespace DataStructureAndAlgorithm.Searching
 {
-    public partial class ArrayProblems
+    public partial class Searching
     {
         public static int AllocateMinimumPages(List<int> pages, int noOfStudents)
         {
@@ -14,7 +14,9 @@ namespace DataStructureAndAlgorithm.Arrays
             }
 
             int low = pages.Max();
+
             int high = pages.Sum();
+
             int result = high;
 
             while (low <= high)
@@ -51,11 +53,11 @@ namespace DataStructureAndAlgorithm.Arrays
                     {
                         return false;
                     }
+
+                    return true;
                 }
-                else
-                {
-                    pageSum += p;
-                }
+
+                pageSum += p;
             }
 
             return true;
