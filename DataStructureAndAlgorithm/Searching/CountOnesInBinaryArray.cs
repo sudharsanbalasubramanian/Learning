@@ -25,7 +25,7 @@ namespace DataStructureAndAlgorithm.Searching
                 {
                     if(mid == 0 || numbers[mid - 1] == 0)
                     {
-                        return mid;
+                        return numbers.Count - mid;
                     }
                     else
                     {
@@ -34,7 +34,7 @@ namespace DataStructureAndAlgorithm.Searching
                 }
             }
 
-            return -1;
+            return 0;
         }
     }
 }
