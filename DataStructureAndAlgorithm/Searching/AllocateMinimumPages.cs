@@ -2,7 +2,7 @@
 
 namespace DataStructureAndAlgorithm.Searching
 {
-    public partial class Searching
+    public partial class SearchingProblems
     {
         public static int AllocateMinimumPages(List<int> pages, int noOfStudents)
         {

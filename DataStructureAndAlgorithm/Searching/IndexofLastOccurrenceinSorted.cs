@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructureAndAlgorithm.Searching
 {
-    public partial class Searching
+    public partial class SearchingProblems
     {
         public static int LastOccurrence(List<int> numbers, int val)
         {

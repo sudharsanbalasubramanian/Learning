@@ -4,7 +4,7 @@ namespace DataStructureAndAlgorithm.Searching
 {
     public partial class SearchingProblems
     {
-        public static int FirstOccurrence(List<int> numbers, int val)
+        public static int CountOnesInBinaryArray(List<int> numbers)
         {
             numbers.ThrowIfNullOrEmpty(nameof(numbers));
 
@@ -12,31 +12,29 @@ namespace DataStructureAndAlgorithm.Searching
 
             int high = numbers.Count - 1;
 
-            while (low <= high)
+            while(low <= high)
             {
                 int mid = low + (high - low) / 2;
 
-                if (numbers[mid] > val)
-                {
-                    high = mid - 1;
-                }
-                else if (numbers[mid] < val)
+                if (numbers[mid] == 0)
                 {
                     low = mid + 1;
                 }
-                else
+
+                else 
                 {
-                    if (mid == 0 || numbers[mid - 1] != numbers[mid])
+                    if(mid == 0 || numbers[mid - 1] == 0)
                     {
                         return mid;
                     }
                     else
+                    {
                         high = mid - 1;
+                    }
                 }
             }
 
             return -1;
         }
-
     }
 }
