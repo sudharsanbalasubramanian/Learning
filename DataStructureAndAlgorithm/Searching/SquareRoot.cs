@@ -22,7 +22,7 @@
             {
                 int mid = low + (high - low) / 2;
 
-                long squaredValue = (long)mid * mid; // use long to prevent overflow
+                long squaredValue = (long)mid * mid; 
 
                 if (squaredValue == value)
                 {

@@ -10,6 +10,7 @@ namespace DataStructureAndAlgorithm.Searching
     {
         public static int LastOccurrence(List<int> numbers, int val)
         {
+
             int low = 0;
             int high = numbers.Count - 1;
 
