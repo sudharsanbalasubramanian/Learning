@@ -2,10 +2,18 @@
 {
     public partial class DynamicProgrammingProblems
     {
+        private readonly static Dictionary<int, int> _frogKJumpMemo = [];
         public static int FrogKJump(int currentIndex, List<int> heights, int maxJump)
         {
+            if(_frogKJumpMemo.TryGetValue(currentIndex, out var energy))
+            {
+                return energy;
+            }
+
             if (currentIndex == 0)
             {
+                _frogKJumpMemo[currentIndex] = 0;
+
                 return 0;
             }
 
@@ -21,6 +29,8 @@
                     minEnergyRequired = Math.Min(minEnergyRequired, jumpEnergy);
                 }
             }
+
+            _frogKJumpMemo[currentIndex] = minEnergyRequired;
 
             return minEnergyRequired;
         }
