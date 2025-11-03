@@ -29,12 +29,10 @@ namespace DataStructureAndAlgorithm.DynamicProgramming
 
             // Recursive calls
             var left = GetUniquePathsMemo(i - 1, j, dp);
+
             var up = GetUniquePathsMemo(i, j - 1, dp);
 
-            // Store the computed result
-            dp[i, j] = left + up;
-
-            return dp[i, j];
+            return dp[i, j] = left + up;
         }
 
     }

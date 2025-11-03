@@ -22,6 +22,7 @@
             }
 
             var pick = elements[index] + MaximumSumOfNon_AdjacentElements(index - 2, elements);
+
             var notPick = MaximumSumOfNon_AdjacentElements(index - 1, elements);
 
             return _maxSumOfNonAdjacentElementMemo[index] = Math.Max(pick, notPick);
