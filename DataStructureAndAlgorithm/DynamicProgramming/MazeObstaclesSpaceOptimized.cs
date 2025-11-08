@@ -10,26 +10,34 @@ namespace DataStructureAndAlgorithm.DynamicProgramming
     {
         public static int MazeObstaclesSpaceOptimized(int row, int col, List<List<int>> maze)
         {
-            int[] dp = new int[col];
-
-            dp[0] = maze[0][0] == -1 ? 0 : 1;
+            int[] prev = new int[col];
 
             for (int i = 0; i < row; i++)
             {
+                int[] curr = new int[col];
                 for (int j = 0; j < col; j++)
                 {
                     if (maze[i][j] == -1)
                     {
-                        dp[j] = 0;
+                        curr[j] = 0;
                     }
-                    if(j > 0)
+                    else if (i == 0 && j == 0)
                     {
-                        dp[j] += dp[j - 1];
+                        curr[j] = 1;
+                    }
+                    else
+                    {
+                        int up = (i > 0) ? prev[j] : 0;
+                        int left = (j > 0) ? curr[j - 1] : 0;
+                        curr[j] = up + left;
                     }
                 }
+                prev = curr;
             }
 
-            return dp[col - 1];
+            return prev[col - 1];
         }
+
+
     }
 }

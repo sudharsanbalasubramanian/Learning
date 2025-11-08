@@ -8,49 +8,38 @@ namespace DataStructureAndAlgorithm.DynamicProgramming
 {
     public partial class DynamicProgrammingProblems
     {
-        public static int MazeObstaclesSpaceOptimized(int row, int col, List<List<int>> maze)
+        public static int GridUniquePathSpaceOptimized(int row, int col)
         {
-            int[] dp = new int[col]; // ✅ should be col, not row
+            int[] prev = new int[col];
 
             for (int i = 0; i < row; i++)
             {
-                int[] current = new int[col]; // holds current row computation
-
+                int[] curr = new int[col];
                 for (int j = 0; j < col; j++)
                 {
-                    if (maze[i][j] == -1)
-                    {
-                        current[j] = 0;
-                        continue;
-                    }
-
                     if (i == 0 && j == 0)
                     {
-                        current[j] = 1;
-                        continue;
+                        curr[j] = 1;
                     }
-
-                    int up = 0, left = 0;
-
-                    if (i > 0)
+                    else
                     {
-                        up = dp[j];
+                        int up = 0, left = 0;
+                        if (i > 0)
+                        {
+                            up = prev[j];
+                        }
+                        if (j > 0)
+                        {
+                            left = curr[j - 1];
+                        }
+                        curr[j] = up + left;
                     }
-
-                    if (j > 0)
-                    {
-                        left = current[j - 1];
-                    }
-
-                    current[j] = up + left;
                 }
-
-                dp = current; // move to next row
+                prev = curr;
             }
 
-            return dp[col - 1];
+            return prev[col - 1];
         }
-
 
     }
 }
