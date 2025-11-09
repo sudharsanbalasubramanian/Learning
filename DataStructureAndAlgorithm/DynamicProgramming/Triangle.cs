@@ -1,4 +1,6 @@
-﻿namespace DataStructureAndAlgorithm.DynamicProgramming
+﻿using SharedProject.Extensions;
+
+namespace DataStructureAndAlgorithm.DynamicProgramming
 {
     public partial class DynamicProgrammingProblems
     {
@@ -8,13 +10,7 @@
             int[,] dp = new int[n, n];
 
             // Initialize dp with -1 to indicate "not computed"
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j <= i; j++)
-                {
-                    dp[i, j] = -1;
-                }
-            }
+            dp.Fill(-1);
 
             return MinimumTotal(triangle, 0, 0, dp);
         }

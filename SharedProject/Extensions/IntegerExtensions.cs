@@ -11,5 +11,10 @@
         {
             return value % 2 == 1;
         }
+
+        public static int MinOfThree(this int a, int b, int c)
+        {
+            return Math.Min(a, Math.Min(b, c));
+        }
     }
 }
