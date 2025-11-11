@@ -10,4 +10,8 @@
     <ProjectReference Include="..\SharedProject\SharedProject.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DynamicProgramming\" />
+  </ItemGroup>
+
 </Project>
