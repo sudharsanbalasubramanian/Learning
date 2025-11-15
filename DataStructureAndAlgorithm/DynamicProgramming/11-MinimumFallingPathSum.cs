@@ -112,6 +112,51 @@ namespace DataStructureAndAlgorithm.DynamicProgramming
             return result;
         }
 
+        public static int MinFallingPathSumSpaceOptimized(int[][] matrix)
+        {
+            int rowCount = matrix.Length;
+            int columnCount = matrix[0].Length;
+
+            int[] prev = new int[columnCount];
+
+            // Base row (last row of matrix)
+            for (int j = 0; j < columnCount; j++)
+            {
+                prev[j] = matrix[rowCount - 1][j];
+            }
+
+            // DP from second last row up to first row
+            for (int i = rowCount - 2; i >= 0; i--)
+            {
+                int[] cur = new int[columnCount];
+
+                for (int j = 0; j < columnCount; j++)
+                {
+                    int down = prev[j];
+
+                    int downLeft = j > 0
+                        ? prev[j - 1]
+                        : int.MaxValue;
+
+                    int downRight = j < columnCount - 1
+                        ? prev[j + 1]
+                        : int.MaxValue;
+
+                    cur[j] = matrix[i][j] + Math.Min(down, Math.Min(downLeft, downRight));
+                }
+
+                prev = cur;
+            }
+
+            // Final answer = min of first row DP
+            int result = int.MaxValue;
+            for (int j = 0; j < columnCount; j++)
+            {
+                result = Math.Min(result, prev[j]);
+            }
+
+            return result;
+        }
 
     }
 }
